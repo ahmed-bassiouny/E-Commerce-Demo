@@ -11,6 +11,9 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.ECommerceDemo">
         <activity
+            android:name=".presentation_layer.activities.home_activity.HomeActivity"
+            android:label="@string/title_activity_home"></activity>
+        <activity
             android:name=".presentation_layer.activities.auth_activity.AuthActivity"
             android:exported="true">
             <intent-filter>
@@ -19,7 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

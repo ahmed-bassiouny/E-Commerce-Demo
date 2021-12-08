@@ -11,6 +11,9 @@ class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
+        // hide action bar
+        actionBar?.hide()
+
         addFragment(VerificationCodeFragment.newInstance(),R.id.flMainContainer)
     }
 }

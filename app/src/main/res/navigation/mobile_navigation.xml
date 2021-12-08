@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.thechefz.e_commerce_demo.presentation_layer.fragments.home.shopping_list.ShoppingListFragment"
-        android:label="@string/title_notifications"
+        android:label="Shopping List"
         tools:layout="@layout/fragment_shopping_list" />
 </navigation>

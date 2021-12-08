@@ -5,16 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.thechefz.e_commerce_demo.R
+import com.thechefz.e_commerce_demo.data_layer.entities.CategoryEntity
 import com.thechefz.e_commerce_demo.data_layer.entities.OrderEntity
-import kotlinx.android.synthetic.main.item_past_order.view.*
+import com.thechefz.e_commerce_demo.utils.extensions.showImage
+import kotlinx.android.synthetic.main.item_category.view.*
 
-class PastOrderItemAdapter(val list:ArrayList<OrderEntity>) :RecyclerView.Adapter<PastOrderItemAdapter.ShoppingItemAdapterHolder>(){
+class CategoryAdapter(val list:ArrayList<CategoryEntity>) :RecyclerView.Adapter<CategoryAdapter.ShoppingItemAdapterHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingItemAdapterHolder {
         return ShoppingItemAdapterHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_past_order, parent, false)
+                .inflate(R.layout.item_category, parent, false)
         )
     }
 
@@ -29,9 +31,8 @@ class PastOrderItemAdapter(val list:ArrayList<OrderEntity>) :RecyclerView.Adapte
         fun bind() {
 
             val item = list[adapterPosition]
-            itemView.tvSellerName.text = item.sellerName
-            itemView.tvPrice.text = item.price
-            itemView.tvOrderCount.text = item.count
+            itemView.tvName.text = item.name
+            itemView.ivItem.showImage(item.img)
 
         }
     }

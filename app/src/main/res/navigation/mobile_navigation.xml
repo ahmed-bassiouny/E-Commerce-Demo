@@ -7,15 +7,15 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.thechefz.e_commerce_demo.presentation_layer.fragments.home.product_list.ProductListFragment"
+        android:name="com.thechefz.e_commerce_demo.presentation_layer.fragments.home.categories.CategoriesFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_categories" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.thechefz.e_commerce_demo.presentation_layer.fragments.home.categories.CategoriesFragment"
+        android:name="com.thechefz.e_commerce_demo.presentation_layer.fragments.home.product_list.ProductListFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_categories" />
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_notifications"

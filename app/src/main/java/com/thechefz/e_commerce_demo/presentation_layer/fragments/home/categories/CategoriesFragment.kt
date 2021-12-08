@@ -32,7 +32,13 @@ class CategoriesFragment : Fragment() {
 
     private fun observer() {
         categoriesViewModel.ordersData.observe(viewLifecycleOwner, Observer {
-            tvPastOrder.adapter = PastOrderItemAdapter(it)
+            recycerlPastOrder.adapter = PastOrderItemAdapter(it)
+        }, loadingObserver = Observer { }, commonErrorObserver = Observer {
+            Toast.makeText(requireContext(), it.getMessage(), Toast.LENGTH_SHORT).show()
+        })
+
+        categoriesViewModel.categoryData.observe(viewLifecycleOwner, Observer {
+            recycler.adapter = CategoryAdapter(it)
         }, loadingObserver = Observer { }, commonErrorObserver = Observer {
             Toast.makeText(requireContext(), it.getMessage(), Toast.LENGTH_SHORT).show()
         })

@@ -1,0 +1,22 @@
+[
+  {
+    "sellerName": "Seller 1",
+    "count": "2 Items",
+    "price": "430 EG"
+  },
+  {
+    "sellerName": "Seller 2",
+    "count": "5 Items",
+    "price": "650 EG"
+  },
+  {
+    "sellerName": "Seller 3",
+    "count": "1 Item",
+    "price": "40 EG"
+  },
+  {
+    "sellerName": "Seller 4",
+    "count": "10 Items",
+    "price": "1100 EG"
+  }
+]

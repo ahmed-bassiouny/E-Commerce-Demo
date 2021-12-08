@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginStart="12dp"
     android:layout_marginEnd="12dp"
     android:layout_marginTop="12dp">
@@ -19,7 +20,7 @@
         android:layout_marginStart="4dp"
         android:id="@+id/tvProductName"
         android:layout_toEndOf="@+id/ivItemLogo"
-        android:text=" Men's Athletic Sweats"
+        tools:text=" Men's Athletic Sweats"
         android:layout_toStartOf="@+id/tvPrice"
         android:textColor="@color/black"
         android:textSize="16sp" />
@@ -30,7 +31,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/tvPrice"
-        android:text="120 EG"/>
+        tools:text="120 EG"/>
 
     <View
         android:layout_width="match_parent"

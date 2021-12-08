@@ -1,13 +1,35 @@
 package com.thechefz.e_commerce_demo.presentation_layer.fragments.home.categories
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.thechefz.e_commerce_demo.data_layer.entities.OrderEntity
+import com.thechefz.e_commerce_demo.data_layer.interactor.OrderInteractor
+import com.thechefz.e_commerce_demo.utils.CombinedLiveEvents
 
-class CategoriesViewModel : ViewModel() {
+class CategoriesViewModel(private val orderInteractor: OrderInteractor) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    val ordersData = CombinedLiveEvents<ArrayList<OrderEntity>>()
+
+    init {
+        getUserInfo()
+        getPastOrder()
+        getCategories()
     }
-    val text: LiveData<String> = _text
+
+    private fun getCategories() {
+
+    }
+
+    private fun getPastOrder() {
+        ordersData.setLoading(true)
+        orderInteractor.getOrders({
+            ordersData.value = it
+        }, {
+            ordersData.setError(it)
+        })
+
+    }
+
+    private fun getUserInfo() {
+
+    }
 }

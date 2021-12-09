@@ -1,30 +1,29 @@
 package com.thechefz.e_commerce_demo.presentation_layer.fragments.home.product_list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.thechefz.e_commerce_demo.R
 import com.thechefz.e_commerce_demo.data_layer.entities.CategoryEntity
+import com.thechefz.e_commerce_demo.data_layer.entities.ProductEntity
+import com.thechefz.e_commerce_demo.utils.extensions.hideKeyboard
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import android.view.inputmethod.EditorInfo
-
-import android.widget.TextView
-import android.widget.TextView.OnEditorActionListener
-import com.thechefz.e_commerce_demo.utils.extensions.hideKeyboard
 
 
-class ProductListFragment : Fragment() {
+class ProductListFragment : Fragment(), (ProductEntity) -> Unit {
 
 
     private val productListViewModel: ProductListViewModel by viewModel()
 
-    private val productAdapter by lazy { ProductAdapter(ArrayList()) }
+    private val productAdapter by lazy { ProductAdapter(ArrayList(), this) }
 
 
     override fun onCreateView(
@@ -55,6 +54,15 @@ class ProductListFragment : Fragment() {
         })
     }
 
+    private fun openProductDetails(item: ProductEntity) {
+        findNavController().navigate(
+            ProductListFragmentDirections.actionNavigationDashboardToProductDetailsFragment(
+                item, getData()?.name ?: ""
+            )
+        )
+
+    }
+
     private fun initViews() {
         recycler.adapter = productAdapter
     }
@@ -72,6 +80,10 @@ class ProductListFragment : Fragment() {
 
     private fun getData(): CategoryEntity? {
         return arguments?.let { ProductListFragmentArgs.fromBundle(it).category }
+    }
+
+    override fun invoke(item: ProductEntity) {
+        openProductDetails(item)
     }
 
 

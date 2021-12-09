@@ -21,6 +21,10 @@
             app:nullable="true"
             android:defaultValue="@null"
             app:argType="com.thechefz.e_commerce_demo.data_layer.entities.CategoryEntity" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
 
 
     </fragment>
@@ -30,4 +34,16 @@
         android:name="com.thechefz.e_commerce_demo.presentation_layer.fragments.home.shopping_list.ShoppingListFragment"
         android:label="Shopping List"
         tools:layout="@layout/fragment_shopping_list" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.thechefz.e_commerce_demo.presentation_layer.fragments.product_details.ProductDetailsFragment"
+        android:label="{title}"
+        tools:layout="@layout/product_details_fragment" >
+        <argument
+            android:name="product"
+            app:argType="com.thechefz.e_commerce_demo.data_layer.entities.ProductEntity" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 </navigation>

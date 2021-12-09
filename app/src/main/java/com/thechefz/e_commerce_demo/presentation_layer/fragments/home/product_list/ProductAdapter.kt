@@ -11,7 +11,7 @@ import com.thechefz.e_commerce_demo.data_layer.entities.ProductEntity
 import com.thechefz.e_commerce_demo.utils.extensions.showImage
 import kotlinx.android.synthetic.main.item_category.view.*
 
-class ProductAdapter(var list:ArrayList<ProductEntity>) :RecyclerView.Adapter<ProductAdapter.ShoppingItemAdapterHolder>(){
+class ProductAdapter(var list:ArrayList<ProductEntity>,val selectedItem:(ProductEntity)->Unit) :RecyclerView.Adapter<ProductAdapter.ShoppingItemAdapterHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingItemAdapterHolder {
@@ -28,9 +28,12 @@ class ProductAdapter(var list:ArrayList<ProductEntity>) :RecyclerView.Adapter<Pr
     override fun getItemCount() = list.size
 
     inner class ShoppingItemAdapterHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+        init {
+            itemView.setOnClickListener {
+                selectedItem.invoke(list[adapterPosition])
+            }
+        }
         fun bind() {
-
             val item = list[adapterPosition]
             itemView.tvName.text = item.name
             itemView.ivItem.showImage(item.img)

@@ -1,4 +1,4 @@
-package com.thechefz.e_commerce_demo.presentation_layer.fragments.home.categories
+package com.thechefz.e_commerce_demo.presentation_layer.fragments.home.product_list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.thechefz.e_commerce_demo.R
 import com.thechefz.e_commerce_demo.data_layer.entities.CategoryEntity
 import com.thechefz.e_commerce_demo.data_layer.entities.OrderEntity
+import com.thechefz.e_commerce_demo.data_layer.entities.ProductEntity
 import com.thechefz.e_commerce_demo.utils.extensions.showImage
 import kotlinx.android.synthetic.main.item_category.view.*
 
-class CategoryAdapter(val list:ArrayList<CategoryEntity>,val selectedItem:(CategoryEntity)->Unit) :RecyclerView.Adapter<CategoryAdapter.ShoppingItemAdapterHolder>(){
+class ProductAdapter(var list:ArrayList<ProductEntity>) :RecyclerView.Adapter<ProductAdapter.ShoppingItemAdapterHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingItemAdapterHolder {
@@ -28,11 +29,6 @@ class CategoryAdapter(val list:ArrayList<CategoryEntity>,val selectedItem:(Categ
 
     inner class ShoppingItemAdapterHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        init {
-            itemView.setOnClickListener {
-                selectedItem.invoke(list[adapterPosition])
-            }
-        }
         fun bind() {
 
             val item = list[adapterPosition]

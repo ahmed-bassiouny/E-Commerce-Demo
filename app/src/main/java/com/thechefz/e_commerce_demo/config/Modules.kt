@@ -1,19 +1,11 @@
 package com.thechefz.e_commerce_demo.config
 
 import android.content.Context
-import com.thechefz.e_commerce_demo.data_layer.interactor.CartInteractor
-import com.thechefz.e_commerce_demo.data_layer.interactor.CategoryInteractor
-import com.thechefz.e_commerce_demo.data_layer.interactor.OrderInteractor
-import com.thechefz.e_commerce_demo.data_layer.interactor.UserInteractor
-import com.thechefz.e_commerce_demo.data_layer.remote_ds.CartRemoteDS
-import com.thechefz.e_commerce_demo.data_layer.remote_ds.CategoryRemoteDS
-import com.thechefz.e_commerce_demo.data_layer.remote_ds.OrderRemoteDS
-import com.thechefz.e_commerce_demo.data_layer.remote_ds.UserRemoteDS
-import com.thechefz.e_commerce_demo.data_layer.repositiries.CartRepo
-import com.thechefz.e_commerce_demo.data_layer.repositiries.CategoryRepo
-import com.thechefz.e_commerce_demo.data_layer.repositiries.OrderRepo
-import com.thechefz.e_commerce_demo.data_layer.repositiries.UserRepo
+import com.thechefz.e_commerce_demo.data_layer.interactor.*
+import com.thechefz.e_commerce_demo.data_layer.remote_ds.*
+import com.thechefz.e_commerce_demo.data_layer.repositiries.*
 import com.thechefz.e_commerce_demo.presentation_layer.fragments.home.categories.CategoriesViewModel
+import com.thechefz.e_commerce_demo.presentation_layer.fragments.home.product_list.ProductListViewModel
 import com.thechefz.e_commerce_demo.presentation_layer.fragments.home.shopping_list.ShoppingListViewModel
 import com.thechefz.e_commerce_demo.presentation_layer.fragments.login.LoginViewModel
 import com.thechefz.e_commerce_demo.presentation_layer.fragments.verification_code.VerificationCodeViewModel
@@ -28,6 +20,7 @@ val repoModule = module {
     single { CartRepo(get()) }
     single { OrderRepo(get()) }
     single { CategoryRepo(get()) }
+    single { ProductRepo(get()) }
 }
 
 val remoteDSModule = module {
@@ -35,6 +28,7 @@ val remoteDSModule = module {
     single { CartRemoteDS( androidContext()) }
     single { OrderRemoteDS( androidContext()) }
     single { CategoryRemoteDS( androidContext()) }
+    single { ProductRemoteDS( androidContext()) }
 }
 
 val useCaseModule = module {
@@ -42,6 +36,7 @@ val useCaseModule = module {
     single { CartInteractor(get()) }
     single { OrderInteractor(get()) }
     single { CategoryInteractor(get()) }
+    single { ProductInteractor(get()) }
 }
 
 
@@ -50,5 +45,6 @@ val viewModelModule = module {
     viewModel { VerificationCodeViewModel(get()) }
     viewModel { ShoppingListViewModel(get()) }
     viewModel { CategoriesViewModel(get(),get()) }
+    viewModel { ProductListViewModel(get()) }
 }
 

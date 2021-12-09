@@ -14,8 +14,16 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.thechefz.e_commerce_demo.presentation_layer.fragments.home.product_list.ProductListFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_home" />
+        android:label="Product List"
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="category"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="com.thechefz.e_commerce_demo.data_layer.entities.CategoryEntity" />
+
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"

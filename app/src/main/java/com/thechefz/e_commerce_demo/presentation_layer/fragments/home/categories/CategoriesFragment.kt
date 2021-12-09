@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.thechefz.e_commerce_demo.R
 import kotlinx.android.synthetic.main.fragment_categories.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,7 +40,14 @@ class CategoriesFragment : Fragment() {
         })
 
         categoriesViewModel.categoryData.observe(viewLifecycleOwner, Observer {
-            recycler.adapter = CategoryAdapter(it)
+            recycler.adapter = CategoryAdapter(it) {
+                activity?.let { it1 ->
+                    Navigation.findNavController(it1, R.id.nav_host_fragment).navigate(
+                        R.id.navigation_dashboard,
+                        bundleOf("category" to it,)
+                    )
+                }
+            }
         }, loadingObserver = Observer { }, commonErrorObserver = Observer {
             Toast.makeText(requireContext(), it.getMessage(), Toast.LENGTH_SHORT).show()
         })

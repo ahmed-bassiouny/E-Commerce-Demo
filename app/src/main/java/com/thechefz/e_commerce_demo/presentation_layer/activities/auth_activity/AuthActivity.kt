@@ -14,6 +14,6 @@ class AuthActivity : AppCompatActivity() {
         // hide action bar
         actionBar?.hide()
 
-        addFragment(VerificationCodeFragment.newInstance(),R.id.flMainContainer)
+        addFragment(LoginFragment.newInstance(),R.id.flMainContainer)
     }
 }

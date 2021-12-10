@@ -10,5 +10,9 @@ data class ProductEntity(
     val img: String,
     val rating: String,
     val description: String,
+    val price: String,
+    var promotionPrice: String? = null,
+    var totalPriceAfterPromotion: String? = null,
+    var totalPrice: String? = null,
     @SerializedName("category_id") val categoryId: String
 ): Parcelable

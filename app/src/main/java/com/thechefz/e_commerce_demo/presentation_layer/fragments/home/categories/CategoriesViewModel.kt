@@ -1,6 +1,7 @@
 package com.thechefz.e_commerce_demo.presentation_layer.fragments.home.categories
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.thechefz.e_commerce_demo.data_layer.entities.CategoryEntity
 import com.thechefz.e_commerce_demo.data_layer.entities.OrderEntity
@@ -8,6 +9,7 @@ import com.thechefz.e_commerce_demo.data_layer.interactor.CategoryInteractor
 import com.thechefz.e_commerce_demo.data_layer.interactor.OrderInteractor
 import com.thechefz.e_commerce_demo.data_layer.interactor.PromotionInteractor
 import com.thechefz.e_commerce_demo.utils.CombinedLiveEvents
+import com.thechefz.e_commerce_demo.utils.SingleLiveEvent
 
 class CategoriesViewModel(
     private val orderInteractor: OrderInteractor,
@@ -17,7 +19,7 @@ class CategoriesViewModel(
 
     val ordersData = CombinedLiveEvents<ArrayList<OrderEntity>>()
     val categoryData = CombinedLiveEvents<ArrayList<CategoryEntity>>()
-    val handlePromotion = CombinedLiveEvents<ArrayList<CategoryEntity>>()
+    val handlePromotionDialog = SingleLiveEvent<String>()
 
     init {
         getPastOrder()
@@ -55,7 +57,7 @@ class CategoriesViewModel(
             args.maxQuantity,
             args.maxPrice
         ) {
-            Log.e("ahmed", it)
+            handlePromotionDialog.value = it
         }
     }
 }

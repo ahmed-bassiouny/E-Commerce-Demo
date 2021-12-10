@@ -8,6 +8,7 @@ import com.thechefz.e_commerce_demo.presentation_layer.fragments.home.categories
 import com.thechefz.e_commerce_demo.presentation_layer.fragments.home.product_list.ProductListViewModel
 import com.thechefz.e_commerce_demo.presentation_layer.fragments.home.shopping_list.ShoppingListViewModel
 import com.thechefz.e_commerce_demo.presentation_layer.fragments.login.LoginViewModel
+import com.thechefz.e_commerce_demo.presentation_layer.fragments.product_details.ProductDetailsViewModel
 import com.thechefz.e_commerce_demo.presentation_layer.fragments.verification_code.VerificationCodeViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -47,5 +48,6 @@ val viewModelModule = module {
     viewModel { ShoppingListViewModel(get()) }
     viewModel { CategoriesViewModel(get(),get(),get()) }
     viewModel { ProductListViewModel(get()) }
+    viewModel { ProductDetailsViewModel(get()) }
 }
 

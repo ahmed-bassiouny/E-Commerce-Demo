@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.thechefz.e_commerce_demo.R
 import kotlinx.android.synthetic.main.fragment_categories.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,12 +29,15 @@ class CategoriesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_categories, container, false)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        categoriesViewModel.handleDeepLink(args)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        listener()
         observer()
-        categoriesViewModel.handleDeepLink(args)
+
     }
 
     private fun observer() {
@@ -55,10 +59,21 @@ class CategoriesFragment : Fragment() {
         }, loadingObserver = Observer { }, commonErrorObserver = Observer {
             Toast.makeText(requireContext(), it.getMessage(), Toast.LENGTH_SHORT).show()
         })
+
+        categoriesViewModel.handlePromotionDialog.observe(viewLifecycleOwner, Observer {
+            showDialog(it)
+        })
+
     }
 
-    private fun listener() {
-
+    private fun showDialog(it: String?) {
+        context?.let { it1 ->
+            MaterialAlertDialogBuilder(it1)
+                .setMessage(it)
+                .setNegativeButton("Close") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
+        }
     }
-
 }

@@ -26,6 +26,10 @@ fun String?.intValue(): Int {
     return this?.toIntOrNull() ?: 0
 }
 
+fun String?.doubleValue(): Double {
+    return this?.toDoubleOrNull() ?: 0.0
+}
+
 fun String?.value(): String {
     return this ?: ""
 }

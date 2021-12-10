@@ -9,7 +9,36 @@
         android:id="@+id/navigation_home"
         android:name="com.thechefz.e_commerce_demo.presentation_layer.fragments.home.categories.CategoriesFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_categories" />
+        tools:layout="@layout/fragment_categories">
+        <argument
+            android:name="categoryId"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="expiryDate"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="minQuantity"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="maxQuantity"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="maxPrice"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="http://www.gtera_bassiouny.com/{categoryId}/{expiryDate}/{minQuantity}/{maxQuantity}/{maxPrice}" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"

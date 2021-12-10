@@ -1,5 +1,6 @@
 package com.thechefz.e_commerce_demo.presentation_layer.fragments.verification_code
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.thechefz.e_commerce_demo.R
+import com.thechefz.e_commerce_demo.presentation_layer.activities.home_activity.HomeActivity
 import kotlinx.android.synthetic.main.verification_code_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -40,7 +42,8 @@ class VerificationCodeFragment : Fragment() {
 
         verificationViewModel.validCodeObserve.observe(viewLifecycleOwner, Observer {
             if (it) {
-                // open home
+                startActivity(Intent(activity,HomeActivity::class.java))
+                activity?.finish()
             }
 
         }, loadingObserver = Observer { }, commonErrorObserver = Observer {

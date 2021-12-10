@@ -37,6 +37,7 @@ val useCaseModule = module {
     single { OrderInteractor(get()) }
     single { CategoryInteractor(get()) }
     single { ProductInteractor(get()) }
+    single { PromotionInteractor(get()) }
 }
 
 
@@ -44,7 +45,7 @@ val viewModelModule = module {
     viewModel { LoginViewModel(get()) }
     viewModel { VerificationCodeViewModel(get()) }
     viewModel { ShoppingListViewModel(get()) }
-    viewModel { CategoriesViewModel(get(),get()) }
+    viewModel { CategoriesViewModel(get(),get(),get()) }
     viewModel { ProductListViewModel(get()) }
 }
 

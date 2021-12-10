@@ -1,6 +1,7 @@
 package com.thechefz.e_commerce_demo.presentation_layer.fragments.home.categories
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.thechefz.e_commerce_demo.R
 import kotlinx.android.synthetic.main.fragment_categories.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -17,7 +19,7 @@ class CategoriesFragment : Fragment() {
 
 
     private val categoriesViewModel: CategoriesViewModel by viewModel()
-
+    private val args : CategoriesFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,10 +28,12 @@ class CategoriesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_categories, container, false)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listener()
         observer()
+        categoriesViewModel.handleDeepLink(args)
     }
 
     private fun observer() {
